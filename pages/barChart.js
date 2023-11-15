@@ -49,14 +49,33 @@ fetch(
       .attr("data-date", (d) => d[0])
       .attr("data-gdp", (d) => d[1])
       .on("mouseover", (e, d) => {
-        // console.log(e);
         const xDistFromCursor = 20;
+
+        const date = new Date(d[0]);
+        const year = date.getFullYear();
+        let quarter = "Q";
+        switch (date.getMonth() + 1) {
+          case 3:
+            quarter += 1;
+            break;
+          case 6:
+            quarter += 2;
+            break;
+          case 9:
+            quarter += 3;
+            break;
+          case 12:
+            quarter += 4;
+            break;
+        }
+
         tooltip
           .style("opacity", 0.8)
           .style("left", `${e.x + xDistFromCursor}px`)
           .html(
             `
-            <p>${d[0]}, ${d[1]}<p>
+            <p>${year}, ${quarter}</p>
+            <p>$${d[1].toLocaleString()} Billion</p>
           `
           )
           .attr("data-date", d[0]);

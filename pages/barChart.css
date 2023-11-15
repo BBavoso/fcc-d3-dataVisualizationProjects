@@ -35,5 +35,12 @@ body {
   background-color: rgba(221, 231, 238, 0.85);
   text-wrap: nowrap;
   opacity: 0.8;
+  text-align: center;
+  padding: 10px;
+  width: 120px;
   /* opacity: 1; */
+}
+
+#tooltip > p {
+  margin: 0;
 }
